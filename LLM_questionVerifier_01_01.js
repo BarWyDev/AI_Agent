@@ -25,7 +25,6 @@ async function fetchQuestion() {
   }
 }
 
-// Funkcja do wysyłania pytania do LLM
 async function sendToLLM(question) {
   console.log("Wysyłanie pytania do LLM:", question, OPENAI_API_KEY);
   try {
@@ -49,7 +48,6 @@ async function sendToLLM(question) {
   }
 }
 
-// Funkcja do wysyłania danych metodą POST
 async function sendFormData(username, password, answer) {
   try {
     const response = await axios.post("https://xyz.ag3nts.org", {
@@ -65,7 +63,6 @@ async function sendFormData(username, password, answer) {
   }
 }
 
-// Główna funkcja
 async function main() {
   const username = "tester"; 
   const password = "574e112a";
@@ -77,12 +74,10 @@ async function main() {
     const answer = await sendToLLM(question);
     console.log("Odpowiedź z LLM:", answer);
 
-    // Uruchom przeglądarkę i otwórz stronę
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
-    await page.goto('https://xyz.ag3nts.org'); // Zamień na URL strony z formularzem
+    await page.goto('https://xyz.ag3nts.org');
 
-    // Selektory dla elementów formularza
     const usernameSelector = 'input[name="username"]';
     const passwordSelector = 'input[name="password"]';
     const answerSelector = 'input[name="answer"]';
